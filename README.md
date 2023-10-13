@@ -18,7 +18,7 @@ Validación de formularios.
 
 # Enlaces:
 
-Github Pages :
+Github Pages : https://alicia3194.github.io/quizProyect/
 
 ## Cómo Jugar
 
@@ -26,6 +26,6 @@ Github Pages :
 2. Abre el archivo `index.html` en tu navegador web.
 3. Selecciona las respuestas a las preguntas haciendo clic en la opción que creas correcta.
 4. Después de responder a las diez preguntas, se mostrará tu puntaje final.
-5. Url https://alicia3194.github.io/quiz_proyect/
+
 
 ¿Tienes lo que se necesita para convertirte en un maestro del cine de terror? ¡Demuéstralo!
