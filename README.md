@@ -18,7 +18,7 @@ Validación de formularios.
 
 # Enlaces:
 
-Github Pages : https://alicia3194.github.io/quizProyect/
+Github Pages : https://alicia3194.github.io/quizProyect/html/quiz.html
 
 ## Cómo Jugar
 
