@@ -85,40 +85,64 @@
 //   },
 // ];
 
-const questions = [
-  { id: "question-container1", answer: "2" },
-  { id: "question-container2", answer: "3" },
-  { id: "question-container3", answer: "2" },
-  { id: "question-container4", answer: "1" },
-  { id: "question-container5", answer: "3" },
-  { id: "question-container6", answer: "1" },
-  { id: "question-container7", answer: "2" },
-  { id: "question-container8", answer: "3" },
-  { id: "question-container9", answer: "1" },
-  { id: "question-container10", answer: "4" },
-];
+document.addEventListener("DOMContentLoaded", function () {
+  const questions = [
+    { id: "question-1", answer: "2" },
+    { id: "question-2", answer: "3" },
+    { id: "question-3", answer: "2" },
+    { id: "question-4", answer: "1" },
+    { id: "question-5", answer: "3" },
+    { id: "question-6", answer: "1" },
+    { id: "question-7", answer: "2" },
+    { id: "question-8", answer: "3" },
+    { id: "question-9", answer: "1" },
+    { id: "question-10", answer: "4" },
+  ];
 
-const form = document.querySelector("form");
+  const form = document.querySelector("form");
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  let correctAnswers = 0;
+    let correctAnswers = 0;
+    const correctResponses = [];
+    const incorrectResponses = [];
 
-  questions.forEach(function (question) {
-    const answer = document.querySelector(
-      `#${question.id} input:checked`
-    ).value;
+    questions.forEach(function (question) {
+      const selectedInput = document.querySelector(
+        `#${question.id} input:checked`
+      );
 
-    if (answer === question.answer) {
-      correctAnswers++;
-      document.querySelector(`#${question.id}`).classList.add("correct");
-    } else {
-      document.querySelector(`#${question.id}`).classList.add("incorrect");
-    }
+      if (selectedInput) {
+        const answer = selectedInput.value;
+
+        if (answer === question.answer) {
+          correctAnswers++;
+          document.querySelector(`#${question.id}`).classList.add("correct");
+          correctResponses.push(question);
+        } else {
+          document.querySelector(`#${question.id}`).classList.add("incorrect");
+          incorrectResponses.push(question);
+        }
+      }
+    });
+
+    const resultsDiv = document.querySelector(".results");
+
+    const correctResponsesList = correctResponses.map(function (response) {
+      return `<li>${response.id}</li>`;
+    });
+
+    const incorrectResponsesList = incorrectResponses.map(function (response) {
+      return `<li>${response.id}</li>`;
+    });
+
+    resultsDiv.innerHTML = `Has acertado ${correctAnswers} de ${
+      questions.length
+    }<br><br>Respuestas correctas:<ul>${correctResponsesList.join(
+      ""
+    )}</ul><br>Respuestas incorrectas:<ul>${incorrectResponsesList.join(
+      ""
+    )}</ul>`;
   });
-
-  const resultsDiv = document.querySelector(".results");
-
-  resultsDiv.innerHTML = `Has acertado ${correctAnswers} de ${questions.length}`;
 });
